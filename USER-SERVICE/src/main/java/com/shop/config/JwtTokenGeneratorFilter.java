@@ -11,6 +11,7 @@ import javax.crypto.SecretKey;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.jsonwebtoken.Jwts;
@@ -35,7 +36,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
             SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
 
             String name = authentication.getName();
-            //System.out.println("name: " + name);
+            System.out.println("name: " + name);
 
             String jwt = Jwts.builder()
                     .setIssuer("Ketan")

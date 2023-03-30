@@ -76,7 +76,7 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 
     public String userName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-       // System.out.println(authentication.getName());
+        System.out.println(authentication.getName());
         return authentication.getName();
     }
 

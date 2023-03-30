@@ -1,5 +1,6 @@
 package com.shop.dto;
 
+import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ShopDto {
 
-    private Integer shop_id;
+    private String shopId;
     private String shopName;
     private String shop_owner_first_name;
     private String shop_owner_last_name;

@@ -4,10 +4,12 @@ package com.shop.controller;
 import com.shop.dto.ShopDto;
 import com.shop.entity.Users;
 import com.shop.exception.UserException;
+import com.shop.repository.UserRepo;
 import com.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     @Autowired
@@ -37,6 +41,7 @@ public class UserController {
     public String welcome(){
         return "Welcome to Shop";
     }
+
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUserHandler(@RequestBody Users user) throws UserException {
@@ -96,8 +101,16 @@ public class UserController {
             return new ResponseEntity<String>(userDeleted, HttpStatus.OK);
         }
 
-
     }
+
+    @GetMapping("/getbygst/{gst_number}")
+    public ResponseEntity<Users> getUserByGstHandler(@PathVariable String gst_number) throws UserException {
+
+        Users getUser = userService.getUserByShopGstNumber(gst_number);
+
+        return new ResponseEntity<Users>(getUser, HttpStatus.OK);
+    }
+
 
 
 }

@@ -29,8 +29,9 @@ public class UserConfig {
             http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                    .cors().and()
                 .csrf().disable()
-                    .cors().configurationSource( new CorsConfigurationSource() {
+                   /* .cors().configurationSource( new CorsConfigurationSource() {
 
                         @Override
                         public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -38,7 +39,7 @@ public class UserConfig {
                             CorsConfiguration cfg = new CorsConfiguration();
 
                             cfg.setAllowedOrigins(Collections.singletonList("*"));
-                            //cfg.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:4500"));
+                            //cfg.setAllowedOrigins(Arrays.asList("http://127.0.0.1/5500", "http://localhost:4500"));
                             //cfg.setAllowedMethods(Arrays.asList("GET", "POST","DELETE","PUT"));
                             cfg.setAllowedMethods(Collections.singletonList("*"));
                             cfg.setAllowCredentials(true);
@@ -49,16 +50,21 @@ public class UserConfig {
 
                         }
                     })
-                .and()
+                .and()*/
                     .addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
                     .addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
                 .authorizeRequests()
                 .requestMatchers(HttpMethod.POST,"/users/register").permitAll()
                     .requestMatchers(HttpMethod.GET,"/users/welcome").hasRole("CUSTOMER")
                     .requestMatchers(HttpMethod.GET,"/users/get","users/shop/getall").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.GET,"/users/get/{user_id}","/users/shop/get/{user_id}").hasAnyRole("ADMIN","SHOP_OWNER","CUSTOMER")
+                    .requestMatchers(HttpMethod.GET,"/users/getbygst/{gst_number}").hasRole("SHOP_OWNER")
+                    .requestMatchers(HttpMethod.POST, "users/shop/product/add/{shopId}").hasRole("SHOP_OWNER")
+                    .requestMatchers(HttpMethod.PUT, "users/shop/update/{shopId}").hasRole("SHOP_OWNER")
+                    .requestMatchers(HttpMethod.GET,"/users/get/{user_id}","/users/shop/get/{user_id}","users/rating/{shop_name}").hasAnyRole("ADMIN","SHOP_OWNER","CUSTOMER")
                     .requestMatchers(HttpMethod.PUT,"/users/update/{user_id}").hasAnyRole("ADMIN","SHOP_OWNER","CUSTOMER")
                     .requestMatchers(HttpMethod.DELETE,"/users/delete/{user_id}").hasAnyRole("ADMIN","SHOP_OWNER","CUSTOMER")
+                    .requestMatchers(HttpMethod.DELETE,"/users/rating/{user_id}/{shop_id}/{rating_id}").hasAnyRole("SHOP_OWNER","CUSTOMER")
+                    .requestMatchers(HttpMethod.DELETE,"/users/shop/delete/{shop_id}").hasRole("SHOP_OWNER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
