@@ -9,6 +9,8 @@ Modules
 2. Shop module
 3. Product Module
 4. Rating module
+5. Service Registry Module
+6. API Gateway Module
 
 Project Type[Solo]:
 -------------------------------
@@ -24,4 +26,5 @@ Technologies:
 - Microservices
 - Eureka Client
 - Spring Security
+- API Gateway
 
