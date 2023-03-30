@@ -12,13 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ShopRating {
 
-    @JsonProperty("ratingId")
     private String ratingId;
-    @JsonProperty("ratingNumber")
+    private String ratingShopName;
     private Integer ratingNumber;
-    @JsonProperty("UserId")
+    private String shopId;
     private String UserId;
-    @JsonProperty("review")
     private String review;
 
 }

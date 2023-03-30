@@ -14,4 +14,6 @@ public interface UserService {
     public Users updateUserById(String user_id, Users user) throws UserException;
     public String deleteUserById(String user_id) throws UserException;
 
+    public Users getUserByShopGstNumber(String shopGstNumber) throws UserException;
+
 }

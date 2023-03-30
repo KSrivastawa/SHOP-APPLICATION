@@ -119,4 +119,25 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public Users getUserByShopGstNumber(String shopGstNumber) throws UserException {
+
+        Users signedUser = userRepo.findByUserEmail(jwtTokenValidatorFilter.userName()).get();
+
+        if(signedUser.getRole().equals("ROLE_SHOP_OWNER") && signedUser.getShopGstNumber().equals(shopGstNumber)){
+            Users user = new Users();
+            user.setUserId(signedUser.getUserId());
+            user.setUserEmail(signedUser.getUserEmail());
+            user.setUserFirstName(signedUser.getUserFirstName());
+            user.setUserLastName(signedUser.getUserLastName());
+            user.setUserMobile(signedUser.getUserMobile());
+            user.setRole(signedUser.getRole());
+            user.setShopGstNumber(signedUser.getShopGstNumber());
+
+            return user;
+        }
+        throw new UserException("You are not authorized to access this user");
+
+    }
+
 }
