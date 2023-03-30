@@ -18,9 +18,10 @@ Project Type[Solo]:
 Technologies:
 --------------------------------
 - Spring Boot
+- Spring MVC
 - Spring Data JPA (Hibernate)
 - MySQL
 - Microservices
 - Eureka Client
 - Spring Security
-- 
+
