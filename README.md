@@ -21,6 +21,7 @@ Project Type[Solo]:
 
 Technologies:
 --------------------------------
+- Java
 - Spring Boot
 - Spring MVC
 - Spring Data JPA (Hibernate)
