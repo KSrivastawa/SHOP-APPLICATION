@@ -1,6 +1,7 @@
 
 # SHOP-APPLICATION
 Shop Application is the User friendly application which are providing the products availability of particular shops. Where Customer easily get all products availability in shops in near by location.
+[MICROSERVICES BASED APPLICATION]
 
 
 Modules
