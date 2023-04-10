@@ -2,7 +2,6 @@ package com.shop.controller;
 
 import com.shop.config.JwtTokenValidatorFilter;
 import com.shop.dto.ShopDto;
-import com.shop.dto.ShopProduct;
 import com.shop.entity.Users;
 import com.shop.exception.UserException;
 import com.shop.repository.UserRepo;

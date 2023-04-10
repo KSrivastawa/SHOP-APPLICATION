@@ -89,7 +89,6 @@ public class UserServiceImpl implements UserService {
                 user1.setRole(signedUser.getRole());
                 user1.setUserFirstName(user.getUserFirstName());
                 user1.setUserLastName(user.getUserLastName());
-                user1.setUserMobile(user.getUserMobile());
                 user1.setRole(signedUser.getRole());
                 user1.setShopGstNumber(signedUser.getShopGstNumber());
 
@@ -130,7 +129,6 @@ public class UserServiceImpl implements UserService {
             user.setUserEmail(signedUser.getUserEmail());
             user.setUserFirstName(signedUser.getUserFirstName());
             user.setUserLastName(signedUser.getUserLastName());
-            user.setUserMobile(signedUser.getUserMobile());
             user.setRole(signedUser.getRole());
             user.setShopGstNumber(signedUser.getShopGstNumber());
 

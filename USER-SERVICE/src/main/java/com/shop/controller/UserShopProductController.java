@@ -6,7 +6,6 @@ import com.shop.dto.ShopProduct;
 import com.shop.entity.Users;
 import com.shop.exception.UserException;
 import com.shop.repository.UserRepo;
-import com.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
